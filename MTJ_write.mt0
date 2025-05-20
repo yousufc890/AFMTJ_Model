@@ -1,0 +1,6 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='W-2024.09 linux64' PARAM_COUNT=0
+.TITLE '************************************************************************************'
+ tsw0             iwr              thermal_stability write_time      
+ temper           alter#          
+  2.603e-09        1.461e-04         69.2804         2.270e-10      
+   25.0000        1               
