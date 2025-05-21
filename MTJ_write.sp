@@ -28,7 +28,7 @@
 .include 'MTJ_model.inc'
 
 *** Options ************************************************************************
-.option post
+.option post=2 method=gear runlvl=6 reltol=1e-3 abstol=1e-12 vntol=1e-6 trtol=1
 .save
 
 *** Voltage biasing to MTJ *********************************************************
@@ -37,8 +37,11 @@ V1 1 0 'vmtj'
 XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.45n' Ms0='1210' P0='0.62' alpha='0.03' Tmp0='358' RA0='5' MA='1' ini='1' Kp='1.08e7'
 
 *** Analysis ***********************************************************************
-.param pw='10ns' 
-.tran 1p 'pw' START=1.0e-18  uic $sweep vmtj 0.3 0.6 0.1
+.param pw='10n' 
+.tran 1p pw START=1.0e-18 uic
+
+* Print magnetization and resistance for verification
+.print tran v(XMTJ1.XLLG.Mz) v(XMTJ1.XLLG.Mz2) v(XMTJ1.XRA.rmtj)
 
 .meas tsw0 when v(XMTJ1.XLLG.Mz)='0'
 .meas iwr find i(XMTJ1.ve1) at 1ns
@@ -47,5 +50,9 @@ XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.45n' Ms0='1210' P0='0.62' alpha='0.03' Tmp
 .measure tran write_time \
     TRIG v(XMTJ1.XLLG.Mz) VAL=-0.5 RISE=1 \
     TARG v(XMTJ1.XLLG.Mz) VAL=0.5 RISE=1
+
+.measure tran write_time2 \
+    TRIG v(XMTJ1.XLLG.Mz2) VAL=0.5 FALL=1 \
+    TARG v(XMTJ1.XLLG.Mz2) VAL=-0.5 FALL=1
 
 .end

@@ -14,8 +14,8 @@
 
 .subckt MTJ e1 e2 lx='65n' ly='130n' lz='1.8n' Ms0='1075' P0='0.715' alpha='0.01' Tmp0='300' RA0='5.4' MA='0.0' ini='1' Kp='1.2e7'
 
-XRA   ex e2 Mx My Mz Tmp thi RA lx='lx' ly='ly' P0='P0' RA0='RA0' MA='MA' 
-XLLG  Mx My Mz Is Ias Tmp thi LLG lx='lx' ly='ly' lz='lz' Ms0='Ms0' P0='P0' alpha='alpha' MA='MA' ini='ini' Kp='Kp'
+XRA   ex e2 Mx My Mz Mx2 My2 Mz2 Tmp thi RA lx='lx' ly='ly' P0='P0' RA0='RA0' MA='MA' 
+XLLG  Mx My Mz Mx2 My2 Mz2 Is Is2 Ias Ias2 Tmp thi LLG lx='lx' ly='ly' lz='lz' Ms0='Ms0' P0='P0' alpha='alpha' MA='MA' ini='ini' Kp='Kp'
 XHD   Ihd Tmp HD lx='lx' ly='ly' lz='lz' Tmp0='Tmp0'
 
 
@@ -30,12 +30,17 @@ Ve1 e1 ex 0
 .param Ipta='1/1.5'
 E_Ias Ias 0 vol='(1+(v(e1)-v(e2))/abs(v(e1)-v(e2)))*(Iatp-Ipta)/2+Ipta'
 
+.param Iatp2='1'
+.param Ipta2='1/1.5'
+E_Ias2 Ias2 0 vol='(1+(v(e1)-v(e2))/abs(v(e1)-v(e2)))*(Iatp2-Ipta2)/2+Ipta2'
 
 *** Charge current passing through MTJ stack *************
 *** Imtj is fed to LLG and Head_Diffusion models *********
 G_Imtj1 0 Is cur='-I(Ve1)'
 G_Imtj2 0 Ihd cur='-I(Ve1)'
 
+G_Imtj1_2 0 Is2 cur='-I(Ve1)'
+*G_Imtj2_2 0 Ihd cur='-I(Ve1)'
 
 
 .ends

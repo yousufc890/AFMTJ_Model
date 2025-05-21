@@ -8,8 +8,12 @@
 ** is implemented.
 ************************************************************************************
 
-.subckt RA n_plus n_minus Mx My Mz Tmp thi lx='65n' ly='130n' P0='0.715' RA0='5.4' MA='0.0'
+.subckt RA n_plus n_minus Mx My Mz Mx2 My2 Mz2 Tmp thi lx='65n' ly='130n' P0='0.715' RA0='5.4' MA='0.0'
 
+* Averaged magnetization vector (AFMTJ: M1 + M2) / 2
+E_Mx_eff Mx_eff 0 vol='(v(Mx) + v(Mx2)) / 2'
+E_My_eff My_eff 0 vol='(v(My) + v(My2)) / 2'
+E_Mz_eff Mz_eff 0 vol='(v(Mz) + v(Mz2)) / 2'
 
 *** Spherical coordinate ***
 E_thip thip 0 vol='(1-MA)*acos((1-MA)*0.999*v(My)/((v(Mx)^2+v(My)^2)^(1/2)))'
