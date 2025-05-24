@@ -34,14 +34,14 @@
 *** Voltage biasing to MTJ *********************************************************
 .param vmtj='0.5'
 V1 1 0 'vmtj'
-XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.45n' Ms0='1210' P0='0.62' alpha='0.03' Tmp0='358' RA0='5' MA='1' ini='1' Kp='1.08e7'
+XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.45n' Ms0='1210' P0='0.62' alpha='0.03' Tmp0='358' RA0='5' MA='1' ini='1' Kp='1.08e7' J_AF='8e-2'
 
 *** Analysis ***********************************************************************
 .param pw='10n' 
 .tran 1p pw START=1.0e-18 uic
 
-* Print magnetization and resistance for verification
-.print tran v(XMTJ1.XLLG.Mz) v(XMTJ1.XLLG.Mz2) v(XMTJ1.XRA.rmtj)
+* Print magnetization
+.print tran v(XMTJ1.XLLG.Mz) v(XMTJ1.XLLG.Mz2)
 
 .meas tsw0 when v(XMTJ1.XLLG.Mz)='0'
 .meas iwr find i(XMTJ1.ve1) at 1ns

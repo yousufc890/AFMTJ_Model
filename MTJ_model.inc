@@ -12,10 +12,10 @@
 .include 'Resistor.inc'
 .include 'HeatDF.inc'
 
-.subckt MTJ e1 e2 lx='65n' ly='130n' lz='1.8n' Ms0='1075' P0='0.715' alpha='0.01' Tmp0='300' RA0='5.4' MA='0.0' ini='1' Kp='1.2e7'
+.subckt MTJ e1 e2 lx='65n' ly='130n' lz='1.8n' Ms0='1075' P0='0.715' alpha='0.01' Tmp0='300' RA0='5.4' MA='0.0' ini='1' Kp='1.2e7' J_AF='0'
 
 XRA   ex e2 Mx My Mz Mx2 My2 Mz2 Tmp thi RA lx='lx' ly='ly' P0='P0' RA0='RA0' MA='MA' 
-XLLG  Mx My Mz Mx2 My2 Mz2 Is Is2 Ias Ias2 Tmp thi LLG lx='lx' ly='ly' lz='lz' Ms0='Ms0' P0='P0' alpha='alpha' MA='MA' ini='ini' Kp='Kp'
+XLLG  Mx My Mz Mx2 My2 Mz2 Is Is2 Ias Ias2 Tmp thi LLG lx='lx' ly='ly' lz='lz' Ms0='Ms0' P0='P0' alpha='alpha' MA='MA' ini='ini' Kp='Kp' J_AF='J_AF'
 XHD   Ihd Tmp HD lx='lx' ly='ly' lz='lz' Tmp0='Tmp0'
 
 

@@ -8,7 +8,7 @@
 ** implemented by LLG equation according to the type of MTJ. 
 ************************************************************************************
 
-.subckt LLG Mx My Mz Mx2 My2 Mz2 Is Is2 Ias Ias2 Tmp thi lx='65n' ly='130n' lz='1.8n' Ms0='1075' P0='0.715' alpha='0.01' MA='0.0' ini='0' Kp='1.2e7'
+.subckt LLG Mx My Mz Mx2 My2 Mz2 Is Is2 Ias Ias2 Tmp thi lx='65n' ly='130n' lz='1.8n' Ms0='1075' P0='0.715' alpha='0.01' MA='0.0' ini='0' Kp='1.2e7' J_AF='0'
 
 *** Physical parameters **************************
 .param pi='355/113'
@@ -39,6 +39,9 @@ E_P  P  0 vol='P0*(1-asp*v(Tmp)^1.5)'
 .param Ny='4*pi*Nsh(lz,lx,ly)'
 .param Nz='4*pi*Nsh(ly,lx,lz)'
 
+* permeability of free space (H/m)
+.param mu0 = 1.2566370614e-6
+.param TAF='gamma*J_AF/Ms0'
 
 *** Initialization  - initial angle with thermal stability *******
 .param Msi='Ms0*(1-Tmp0/Tcurie)^beta'
@@ -74,19 +77,36 @@ E_Hdz2 Hdz2 0 vol='-Nz*v(Mz2)*v(Ms)'
 *** Crystal ansisotropy field for perpendicular MTJ *******
 E_Hiz Hiz 0 vol='2*Kp/v(Ms)*v(Mz)'
 
+*---------------------------
+* INTERLAYER EXCHANGE FIELDS (COUPLING)
+* These inject the other layer's magnetization as a field
+* J_AF > 0 causes opposite alignment (AFM behavior)
+*---------------------------
+
+* For M1: Field from M2 magnetization
+E_Hex_x AFHx  0 vol='J_AF * v(Mx2)'
+E_Hex_y AFHy  0 vol='J_AF * v(My2)'
+E_Hex_z AFHz  0 vol='J_AF * v(Mz2)'
 
 *** Effective anisotropy field ********************
-E_Hefx Hefx 0 vol='v(Hdx)'
-E_Hefy Hefy 0 vol='v(Hdy)'
-E_Hefz Hefz 0 vol='v(Hdz)+MA*v(Hiz)'
+*** These get used in the precession and damping torque calculations.
+*** They determine how magnetization evolves with time.
+E_Hefx Hefx 0 vol='v(Hdx) + v(AFHx)'
+E_Hefy Hefy 0 vol='v(Hdy) + v(AFHy)' 
+E_Hefz Hefz 0 vol='v(Hdz)+MA*v(Hiz) + v(AFHz)'
 
 *** For sublattice M2 ***
 E_Hiz2 Hiz2 0 vol='2*Kp/v(Ms)*v(Mz2)'
 
+* For M2: Field from M1 magnetization
+E_Hex2_x AFHx2  0 vol='J_AF * v(Mx)'
+E_Hex2_y AFHy2  0 vol='J_AF * v(My)'
+E_Hex2_z AFHz2  0 vol='J_AF * v(Mz)'
+
 *** Effective anisotropy field ********************
-E_Hefx2 Hefx2 0 vol='v(Hdx2)'
-E_Hefy2 Hefy2 0 vol='v(Hdy2)'
-E_Hefz2 Hefz2 0 vol='v(Hdz2)+MA*v(Hiz2)'
+E_Hefx2 Hefx2 0 vol='v(Hdx2) + v(AFHx2)'
+E_Hefy2 Hefy2 0 vol='v(Hdy2) + v(AFHy2)'
+E_Hefz2 Hefz2 0 vol='v(Hdz2)+MA*v(Hiz2) + v(AFHz2)'
 
 *** Polarized spin current (J=Ias/lx/ly) **********
 R_Is Is 0 'v(Ias)*v(P)*h/(2*e*lx*ly*lz*1e6*v(Ms))'
@@ -99,16 +119,19 @@ C_Mx Mx 0 '(1+alpha*alpha)/gamma'
 G_dMx_prec 0 Mx cur='-(v(My)*v(Hefz)-v(Hefy)*v(Mz))'
 G_dMx_damp 0 Mx cur='-alpha*(v(My)*(v(Mx)*v(Hefy)-v(Hefx)*v(My))-(v(Mz)*v(Hefx)-v(Hefz)*v(Mx))*v(Mz))'
 G_dMx_torq 0 Mx cur='v(Is)*(v(My)*(v(Mx)*Mpy-Mpx*v(My))-(v(Mz)*Mpx-Mpz*v(Mx))*v(Mz))'
+G_dMx_ex 0 Mx cur='TAF*(v(My)*v(Mz2) - v(Mz)*v(My2))'
 
 C_My My 0 '(1+alpha*alpha)/gamma'
 G_dMy_prec 0 My cur='-(v(Mz)*v(Hefx)-v(Hefz)*v(Mx))'
 G_dMy_damp 0 My cur='-alpha*(v(Mz)*(v(My)*v(Hefz)-v(Hefy)*v(Mz))-(v(Mx)*v(Hefy)-v(Hefx)*v(My))*v(Mx))'
 G_dMy_torq 0 My cur='v(Is)*(v(Mz)*(v(My)*Mpz-Mpy*v(Mz))-(v(Mx)*Mpy-Mpx*v(My))*v(Mx))'
+G_dMy_ex 0 My cur='TAF*(v(Mz)*v(Mx2) - v(Mx)*v(Mz2))'
 
 C_Mz Mz 0 '(1+alpha*alpha)/gamma'
 G_dMz_prec 0 Mz cur='-(v(Mx)*v(Hefy)-v(Hefx)*v(My))'
 G_dMz_damp 0 Mz cur='-alpha*(v(Mx)*(v(Mz1)*v(Hefx)-v(Hefz)*v(Mx))-(v(My)*v(Hefz)-v(Hefy)*v(Mz1))*v(My))'
 G_dMz_torq 0 Mz cur='v(Is)*(v(Mx)*(v(Mz1)*Mpx-Mpz*v(Mx))-(v(My)*Mpz-Mpy*v(Mz1))*v(My))'
+G_dMz_ex 0 Mz cur='TAF*(v(Mx)*v(My2) - v(My)*v(Mx2))'
 E_Mz1 Mz1 0 vol='v(Mz)' max='cos(v(thi))' min='-cos(v(thi))'
 
 *** LLG solving for Mx2, My2, Mz2 ********************
@@ -116,16 +139,19 @@ C_Mx2 Mx2 0 '(1+alpha*alpha)/gamma'
 G_dMx2_prec 0 Mx2 cur='-(v(My2)*v(Hefz2)-v(Hefy2)*v(Mz2))'
 G_dMx2_damp 0 Mx2 cur='-alpha*(v(My2)*(v(Mx2)*v(Hefy2)-v(Hefx2)*v(My2))-(v(Mz2)*v(Hefx2)-v(Hefz2)*v(Mx2))*v(Mz2))'
 G_dMx2_torq 0 Mx2 cur='v(Is2)*(v(My2)*(v(Mx2)*Mpy-Mpx*v(My2))-(v(Mz2)*Mpx-Mpz*v(Mx2))*v(Mz2))'
+G_dMx2_ex 0 Mx2 cur='TAF*(v(My2)*v(Mz) - v(Mz2)*v(My))'
 
 C_My2 My2 0 '(1+alpha*alpha)/gamma'
 G_dMy2_prec 0 My2 cur='-(v(Mz2)*v(Hefx2)-v(Hefz2)*v(Mx2))'
 G_dMy2_damp 0 My2 cur='-alpha*(v(Mz2)*(v(My2)*v(Hefz2)-v(Hefy2)*v(Mz2))-(v(Mx2)*v(Hefy2)-v(Hefx2)*v(My2))*v(Mx2))'
 G_dMy2_torq 0 My2 cur='v(Is2)*(v(Mz2)*(v(My2)*Mpz-Mpy*v(Mz2))-(v(Mx2)*Mpy-Mpx*v(My2))*v(Mx2))'
+G_dMy2_ex 0 My2 cur='TAF*(v(Mz2)*v(Mx) - v(Mx2)*v(Mz))'
 
 C_Mz2 Mz2 0 '(1+alpha*alpha)/gamma'
 G_dMz2_prec 0 Mz2 cur='-(v(Mx2)*v(Hefy2)-v(Hefx2)*v(My2))'
 G_dMz2_damp 0 Mz2 cur='-alpha*(v(Mx2)*(v(Mz2_Clip)*v(Hefx2)-v(Hefz2)*v(Mx2))-(v(My2)*v(Hefz2)-v(Hefy2)*v(Mz2_Clip))*v(My2))'
 G_dMz2_torq 0 Mz2 cur='v(Is2)*(v(Mx2)*(v(Mz2_Clip)*Mpx-Mpz*v(Mx2))-(v(My2)*Mpz-Mpy*v(Mz2_Clip))*v(My2))'
+G_dMz2_ex 0 Mz2 cur='TAF*(v(Mx2)*v(My) - v(My2)*v(Mx))'
 E_Mz2_Clip Mz2_Clip 0 vol='v(Mz2)' max='cos(v(thi))' min='-cos(v(thi))'
 
 .ends
