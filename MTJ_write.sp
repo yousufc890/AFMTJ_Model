@@ -34,25 +34,32 @@
 *** Voltage biasing to MTJ *********************************************************
 .param vmtj='0.5'
 V1 1 0 'vmtj'
-XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.3n' Ms0='600' P0='0.715' alpha='0.02' Tmp0='358' RA0='5' MA='1' ini='1' Kp='1e7' J_AF='8e-2'
+XMTJ1 1 0 MTJ lx='45n' ly='45n' lz='0.3n' Ms0='600' P0='0.62' alpha='0.02' Tmp0='358' RA0='5' MA='1' ini='1' Kp='1.08e7' J_AF='8e-2'
 
 *** Analysis ***********************************************************************
 .param pw='10n' 
 .tran 1p pw START=1.0e-18 uic
 
 * Print magnetization
-.print tran v(XMTJ1.XLLG.Mz) v(XMTJ1.XLLG.Mz2)
+*.print tran v(XMTJ1.XLLG.Mz) v(XMTJ1.XLLG.Mz2)
+.print tran v(XMTJ1.XRA.rmtj)
 
 .meas tsw0 when v(XMTJ1.XLLG.Mz)='0'
 .meas iwr find i(XMTJ1.ve1) at 1ns
 .meas thermal_stability find v(XMTJ1.XLLG.thste) at 1ns
 
-.measure tran write_time \
+.measure tran m1_switch_time \
     TRIG v(XMTJ1.XLLG.Mz) VAL=-0.5 RISE=1 \
     TARG v(XMTJ1.XLLG.Mz) VAL=0.5 RISE=1
 
-.measure tran write_time2 \
+.measure tran m2_switch_time \
     TRIG v(XMTJ1.XLLG.Mz2) VAL=0.5 FALL=1 \
     TARG v(XMTJ1.XLLG.Mz2) VAL=-0.5 FALL=1
+
+* Write time in (MTJ) measured by observing the time it takes
+* to switch between its high and low resistance states.
+.measure tran resistence_based_write_time \
+    TRIG v(XMTJ1.XRA.rmtj) VAL=3.3k FALL=1 \
+    TARG v(XMTJ1.XRA.rmtj) VAL=2.5k FALL=1
 
 .end
