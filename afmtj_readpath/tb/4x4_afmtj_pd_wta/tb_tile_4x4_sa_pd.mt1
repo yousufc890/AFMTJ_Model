@@ -1,0 +1,10 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='W-2024.09 linux64' PARAM_COUNT=0
+.TITLE '* tb02_tile_4x4_sa_pd.sp — 4×4 afmtj tile with pd (eq/base) + stsa'
+ t_wta_row1_abs   t_wta_row2_abs   t_wta_row3_abs   t_wta_row4_abs  
+ t_wta_row1       t_wta_row2       t_wta_row3       t_wta_row4      
+ e_vdd            e_vbias          e_read           vbias_min       
+ temper           alter#          
+  6.004e-10        6.004e-10        6.004e-10        6.004e-10      
+  4.377e-13        4.377e-13        4.377e-13        4.377e-13      
+  5.740e-19        2.994e-15        2.995e-15          0.1286       
+   25.0000        2               

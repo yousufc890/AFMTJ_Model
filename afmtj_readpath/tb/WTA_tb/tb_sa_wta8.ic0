@@ -1,0 +1,35 @@
+* "simulator" "PrimeSim HSPICE"
+* "version" "W-2024.09 linux64"
+* "format" "HSP"
+* "rundate" "23:57:00 10/07/2025 "
+* "netlist" "tb_sa_wta8.sp "
+* "runtitle" "* tb_sa_wta8.sp — smoke test for sa_wta8"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ in1 = 145.0000m       
++ in2 = 145.0000m       
++ in3 = 145.0000m       
++ in4 = 145.0000m       
++ in5 = 145.0000m       
++ in6 = 145.0000m       
++ in7 = 145.0000m       
++ in8 = 145.0000m       
++ out = 450.0000m       
++ ren =   0.            
++ vdd = 900.0000m       
++ vref = 150.0000m       
++ xw.n1 =  -1.0000        
++ xw.n2 =  -1.0000        
++ xw.n3 =  -1.0000        
++ xw.n4 =  -1.0000        
++ xw.n5 =  -1.0000        
++ xw.n6 =  -1.0000        
++ xw.n7 =  -1.0000        
++ xw.n8 =  -1.0000        
++ xw.navg =  -1.0000        
++ xw.nint =   0.            
+***   END: Saved Operating Point ***                     

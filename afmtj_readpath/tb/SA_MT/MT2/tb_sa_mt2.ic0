@@ -1,0 +1,23 @@
+* "simulator" "PrimeSim HSPICE"
+* "version" "W-2024.09 linux64"
+* "format" "HSP"
+* "rundate" "13:34:17 10/11/2025 "
+* "netlist" "tb_sa_mt2.sp "
+* "runtitle" "* tb_sa_mt2.sp — smoke test for sa_mt2"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ in = 150.0000m       
++ out = 450.0000m       
++ ren =   0.            
++ vdd = 900.0000m       
++ vtap1 = 130.0000m       
++ vtap2 = 170.0000m       
++ xmt2.err =-500.0000m       
++ xmt2.n1 = 900.0000m       
++ xmt2.n2 =   0.            
++ xmt2.nint =   0.            
+***   END: Saved Operating Point ***                     

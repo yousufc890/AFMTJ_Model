@@ -1,0 +1,96 @@
+****** PrimeSim HSPICE -- W-2024.09 linux64 (Aug 27 2024 9174816) ******
+Input File: tb_tile_4x4_sa_pd.sp
+lic:
+lic: FLEXlm: SDK_14.2
+lic: USER:   ychoudhary           HOSTNAME: compute.engr.arizona.edu
+lic: HOSTID: ffffffff87964adc     PID:      2975955
+lic: Using FLEXlm license file:
+lic: 27006@flexlm.engr.arizona.edu
+lic: Checkout 1 hspice
+lic: License/Maintenance for hspice will expire on 20-oct-2027/2024.09
+lic: 1(in_use)/50(total) FLOATING license(s) on SERVER 27006@flexlm.engr.arizona.edu
+lic:
+
+ init: begin read circuit files, cpu clock= 1.15E+00
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/ad
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/behave
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/bjt
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/burr_brn
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/comlinear
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/dio
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/fet
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/lin_tech
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/pci
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/signet
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/ti
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/tline
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/xilinx
+       option post
+       option list
+       option method = gear
+       option reltol =    1.000E-03
+       option abstol =    1.000E-12
+       option vntol =    1.000E-06
+ init: end read circuit files, cpu clock= 1.16E+00 peak memory=     469 mb
+ init: begin check errors, cpu clock= 1.16E+00
+ init: end check errors, cpu clock= 1.53E+00 peak memory=     476 mb
+ init: begin setup matrix, pivot=     0 cpu clock= 1.53E+00
+       establish matrix -- done, cpu clock= 1.53E+00 peak memory=     476 mb
+       re-order matrix -- done, cpu clock= 1.54E+00 peak memory=     476 mb
+ init: end setup matrix, cpu clock= 1.55E+00 peak memory=     477 mb
+ output: tb_tile_4x4_sa_pd.mt0
+ sweep: tran tran0    begin, stop_t=  1.20E-09 #sweeps=2401 cpu clock= 2.01E+00
+ tran: time= 1.2020E-10 tot_iter=    1926 conv_iter=     256 cpu clock= 5.11E+00
+ tran: time= 2.4011E-10 tot_iter=    2479 conv_iter=     425 cpu clock= 6.07E+00
+ tran: time= 3.6047E-10 tot_iter=    2901 conv_iter=     541 cpu clock= 6.79E+00
+ tran: time= 4.8034E-10 tot_iter=    3278 conv_iter=     652 cpu clock= 7.43E+00
+ tran: time= 6.0000E-10 tot_iter=    3698 conv_iter=     776 cpu clock= 8.15E+00
+ tran: time= 7.2034E-10 tot_iter=    4161 conv_iter=     910 cpu clock= 8.95E+00
+ tran: time= 8.4017E-10 tot_iter=    4580 conv_iter=    1023 cpu clock= 9.65E+00
+ tran: time= 9.6024E-10 tot_iter=    5020 conv_iter=    1142 cpu clock= 1.04E+01
+ tran: time= 1.0802E-09 tot_iter=    5457 conv_iter=    1262 cpu clock= 1.11E+01
+ tran: time= 1.2000E-09 tot_iter=    5876 conv_iter=    1375 cpu clock= 1.19E+01
+ sweep: tran tran0    end, cpu clock= 1.19E+01 peak memory=     478 mb
+>info:         ***** hspice job concluded
+ init: begin read circuit files, cpu clock= 1.19E+01
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/ad
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/behave
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/bjt
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/burr_brn
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/comlinear
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/dio
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/fet
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/lin_tech
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/pci
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/signet
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/ti
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/tline
+       option search = /opt/CoE/synopsys/2024/hspice/W-2024.09/hspice/parts/xilinx
+       option post
+       option list
+       option method = gear
+       option reltol =    1.000E-03
+       option abstol =    1.000E-12
+       option vntol =    1.000E-06
+ init: end read circuit files, cpu clock= 1.19E+01 peak memory=     478 mb
+ init: begin check errors, cpu clock= 1.19E+01
+ init: end check errors, cpu clock= 1.23E+01 peak memory=     478 mb
+ init: begin setup matrix, pivot=     0 cpu clock= 1.23E+01
+       establish matrix -- done, cpu clock= 1.23E+01 peak memory=     478 mb
+       re-order matrix -- done, cpu clock= 1.23E+01 peak memory=     478 mb
+ init: end setup matrix, cpu clock= 1.23E+01 peak memory=     478 mb
+ output: tb_tile_4x4_sa_pd.mt1
+ sweep: tran tran0    begin, stop_t=  1.20E-09 #sweeps=2401 cpu clock= 1.25E+01
+ tran: time= 1.2020E-10 tot_iter=    1926 conv_iter=     256 cpu clock= 1.59E+01
+ tran: time= 2.4011E-10 tot_iter=    2479 conv_iter=     425 cpu clock= 1.68E+01
+ tran: time= 3.6047E-10 tot_iter=    2901 conv_iter=     541 cpu clock= 1.75E+01
+ tran: time= 4.8034E-10 tot_iter=    3278 conv_iter=     652 cpu clock= 1.82E+01
+ tran: time= 6.0000E-10 tot_iter=    3734 conv_iter=     777 cpu clock= 1.89E+01
+ tran: time= 7.2011E-10 tot_iter=    4179 conv_iter=     910 cpu clock= 1.97E+01
+ tran: time= 8.4150E-10 tot_iter=    4595 conv_iter=    1022 cpu clock= 2.04E+01
+ tran: time= 9.6023E-10 tot_iter=    5021 conv_iter=    1140 cpu clock= 2.11E+01
+ tran: time= 1.0814E-09 tot_iter=    5471 conv_iter=    1259 cpu clock= 2.19E+01
+ tran: time= 1.2000E-09 tot_iter=    5887 conv_iter=    1371 cpu clock= 2.26E+01
+ sweep: tran tran0    end, cpu clock= 2.26E+01 peak memory=     479 mb
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

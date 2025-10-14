@@ -1,0 +1,8 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='W-2024.09 linux64' PARAM_COUNT=0
+.TITLE '* tb01_cell_sa_pd.sp — 1-cell afmtj + pd + stsa integration'
+ t55_any          t90_any          t_sa_latch       t_slew_55_90    
+ e_vdd            e_vbias          e_read           temper          
+ alter#          
+  9.240e-10        9.242e-10        3.242e-10        1.891e-13      
+ -3.083e-15        2.833e-15       -2.504e-16         25.0000       
+2               

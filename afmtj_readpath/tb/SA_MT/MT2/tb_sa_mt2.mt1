@@ -1,0 +1,8 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='W-2024.09 linux64' PARAM_COUNT=0
+.TITLE '* tb_sa_mt2.sp — smoke test for sa_mt2'
+ t_cross90        out_final        vout_pre         vout_post       
+ vnint_pre        vnint_post       e_sa_cap         temper          
+ alter#          
+ -7.600e-12          0.9000           0.4500           0.9000       
+    0.0              0.3870         1.052e-15         25.0000       
+2               

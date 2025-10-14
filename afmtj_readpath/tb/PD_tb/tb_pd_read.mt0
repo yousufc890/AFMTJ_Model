@@ -1,0 +1,8 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='W-2024.09 linux64' PARAM_COUNT=0
+.TITLE '* tb_pd_base_only.sp — pd_read unit test (baseline, no equalize)'
+ t_pc_rise        t90_any          t95_any          t_settle90      
+ t_settle95       e_vbias          vbit_pre         vbit_hold       
+ vbit_droop       temper           alter#          
+  7.650e-10        8.577e-10        8.711e-10        9.274e-11      
+  1.061e-10        1.497e-14          0.1443         6.526e-02      
+  7.900e-02         25.0000        1               
