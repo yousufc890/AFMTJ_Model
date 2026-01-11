@@ -1,8 +1,8 @@
 ************************************************************************************
 ************************************************************************************
 ** Title:  LLG_solver.inc
-** Author: Jongyeon Kim, VLSI Research Lab @ UMN
-** Email:  kimx2889@umn.edu
+** Authors: For AFMTJ Yousuf Choudhary, HW Accelerator Research @ UofA for MTJ Base Model Jongyeon Kim, VLSI Research Lab @ UMN
+** Emails:  ychoudhary@arizona.edu, kimx2889@umn.edu
 ************************************************************************************
 ** At the given MTJ dimensions and material parameters, the dynamic motion is
 ** implemented by LLG equation according to the type of MTJ. 
