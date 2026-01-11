@@ -1,8 +1,8 @@
 ********************************************************************************************************
 ********************************************************************************************************
 ** Title:  MTJ_model.inc
-** Author: Jongyeon Kim, VLSI Research Lab @ UMN
-** Email:  kimx2889@umn.edu
+** Authors: For AFMTJ Yousuf Choudhary, HW Accelerator Research @ UofA for MTJ Base Model Jongyeon Kim, VLSI Research Lab @ UMN
+** Emails:  ychoudhary@arizona.edu, kimx2889@umn.edu
 ********************************************************************************************************
 ** This library includes LLG_solver.inc, Resistance.inc, Thermal_fluctuation.inc, and Heat_diffusion.inc.
 ** At the given voltage across the MTJ, dynamic current and resistance are generated.
