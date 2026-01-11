@@ -1,8 +1,8 @@
 ************************************************************************************
 ************************************************************************************
 ** Title:  Resistance.inc
-** Author: Jongyeon Kim, VLSI Research Lab @ UMN
-** Email:  kimx2889@umn.edu
+** Authors: For AFMTJ Yousuf Choudhary, HW Accelerator Research @ UofA for MTJ Base Model Jongyeon Kim, VLSI Research Lab @ UMN
+** Emails:  ychoudhary@arizona.edu, kimx2889@umn.edu
 ************************************************************************************
 ** The dependence of resistance on  relative angle, temperature, and bias voltage
 ** is implemented.
@@ -47,3 +47,4 @@ E_rmtj rmtj 0 vol='(1+cos(v(th)))*(Rp-v(Rap))/2+v(Rap)'
 
 
 .ends
+
