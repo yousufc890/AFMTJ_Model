@@ -20,7 +20,7 @@ The main simulation netlist is mtj_write.sp.
 
 Run transient simulation:
 
-`hspice mtj_write.sp > mtj_write.lis`
+`hspice mtj_write.sp`
 
 This executes a write operation on an AFMTJ cell using a voltage bias applied across the MTJ.
 
