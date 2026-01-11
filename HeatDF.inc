@@ -1,8 +1,8 @@
 ************************************************************************************
 ************************************************************************************
 ** Title:  HeatDF.inc
-** Author: Jongyeon Kim, VLSI Research Lab @ UMN
-** Email:  kimx2889@umn.edu
+** Authors: For AFMTJ Yousuf Choudhary, HW Accelerator Research @ UofA for MTJ Base Model Jongyeon Kim, VLSI Research Lab @ UMN
+** Emails:  ychoudhary@arizona.edu, kimx2889@umn.edu
 ************************************************************************************
 ** Joule heating in the MTJ increases the internal temperature resulting in larger Hf. 
 ** Also, both Ms and P have a temperature dependency.
