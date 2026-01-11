@@ -1,16 +1,17 @@
 ************************************************************************************
 ************************************************************************************
 ** Title:  MTJ_write.sp
-** Author: Jongyeon Kim, VLSI Research Lab @ UMN
-** Email:  kimx2889@umn.edu
+** Authors: For AFMTJ Yousuf Choudhary, HW Accelerator Research @ UofA for MTJ Base Model Jongyeon Kim, VLSI Research Lab @ UMN
+** Emails:  ychoudhary@arizona.edu, kimx2889@umn.edu
 ************************************************************************************
-** This run file simulates the dynamic motion of  MTJ.
+** This run file simulates the dynamic motion of  AFMTJ.
 ** # Instruction for simulation
-** 1. Set the MTJ dimensions and material parameters.
+** 1. Set the AFMTJ dimensions and material parameters.
 ** 2. Select anisotropy(IMA/PMA) and initial state of free layer(P/AP).
 ** 3. Adjust bias voltage for Read/Write operation.
 ** ex. APtoP switching: positive voltage @ ini='1'
 **     PtoAP switching: negative voltage @ ini='0'  
+**     Also adjust voltage sign (- for ini=0) based on switching type
 ************************************************************************************
 ** # Description of parameters
 ** lx,ly,lz: width, length, and thickness of free layer
